@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
@@ -16,6 +17,7 @@ class ViewController: UIViewController {
     var imageNumber = 0
     var messageNumber = 0
      let totalNumberOfImages = 5
+    var audioPlayer = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,17 @@ class ViewController: UIViewController {
         }  while imageNumber == newImageNumber
         imageNumber = newImageNumber
         imageView.image = UIImage(named:"image\(imageNumber)")
+        
+        if let sound = NSDataAsset(name: "sound0"){
+            do{
+                try audioPlayer = AVAudioPlayer(data: sound.data)
+                audioPlayer.play()
+            }catch {
+                print ("😠error:\(error)!")
+            }
+        }else{
+            print ("😠error!")
+        }
 }
 
 }
