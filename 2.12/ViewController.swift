@@ -17,14 +17,17 @@ class ViewController: UIViewController {
     
     var imageNumber = 0
     var messageNumber = 0
+    var soundNumber = 0
     let totalNumberOfImages = 5
+    let totalNumberOfSounds = 5
     var audioPlayer = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func playSound(sound: NSDataAsset) {
+    func playSound(name:String) {
+        if let sound = NSDataAsset(name: name){
         do {
             try audioPlayer = AVAudioPlayer(data: sound.data)
             audioPlayer.play()
@@ -33,33 +36,32 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    @IBAction func showButtonPressed(_ sender: Any) {
+        func nonRepeatingNumber(originalNumber: Int, upperLimit: Int) -> Int{
+        var newNumber: Int
+        repeat{
+                 newNumber = Int.random (in:0...upperLimit)
+             }  while originalNumber == newNumber
+             return newNumber
+        }
+        func showButtonPressed(_ sender: Any) {
         let messages = ["you are awesome",
                         "you are great",
                         "you are fantastic",
                         "genius bar calls you when they need help",
                         "fabulous? thats you",
                         "you got skills"]
-        var newMessageNumber : Int
-        repeat {
-            newMessageNumber = Int.random(in:0...messages.count-1)
-        } while messageNumber == newMessageNumber
-        messageNumber = newMessageNumber
-        messageLabel.text = messages[newMessageNumber]
+        
+            messageNumber = nonRepeatingNumber(originalNumber: messageNumber, upperLimit: messages.count-1)
+        messageLabel.text = messages[messageNumber]
         
         
-        var newImageNumber : Int
-        repeat{
-            newImageNumber = Int.random (in:0...totalNumberOfImages)
-        }  while imageNumber == newImageNumber
-        imageNumber = newImageNumber
+        imageNumber = nonRepeatingNumber(originalNumber: imageNumber, upperLimit: totalNumberOfImages-1)
         imageView.image = UIImage(named:"image\(imageNumber)")
         
-        if let sound = NSDataAsset(name: "sound0"){
-            playSound(sound: sound)
+            soundNumber = nonRepeatingNumber(originalNumber: soundNumber, upperLimit: totalNumberOfSounds-1)
+            playSound(name: "sound\(soundNumber)")
             
         }
-        
     }
 }
+
