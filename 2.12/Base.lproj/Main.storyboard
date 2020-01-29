@@ -28,7 +28,7 @@
                                 <rect key="frame" x="109" y="125" width="102" height="30"/>
                                 <state key="normal" title="show message"/>
                                 <connections>
-                                    <action selector="showButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GD8-7b-a4s"/>
+                                    <action selector="showButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cm9-Si-CRi"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="doT-8g-ICf">

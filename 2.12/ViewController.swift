@@ -10,10 +10,9 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
+    
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    
-    
     
     var imageNumber = 0
     var messageNumber = 0
@@ -35,7 +34,7 @@ class ViewController: UIViewController {
             print ("😠error:\(error)!")
         }
     }
-    
+    }
         func nonRepeatingNumber(originalNumber: Int, upperLimit: Int) -> Int{
         var newNumber: Int
         repeat{
@@ -43,7 +42,9 @@ class ViewController: UIViewController {
              }  while originalNumber == newNumber
              return newNumber
         }
-        func showButtonPressed(_ sender: Any) {
+       
+    @IBAction func showButtonPressed(_ sender: UIButton) {
+
         let messages = ["you are awesome",
                         "you are great",
                         "you are fantastic",
@@ -63,5 +64,5 @@ class ViewController: UIViewController {
             
         }
     }
-}
+
 
